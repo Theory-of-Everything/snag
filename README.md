@@ -8,7 +8,6 @@ To install "plugins"
 
 snag-use "zsh-users/zsh-syntax-highlighting"
 snag-use "hlissner/zsh-autopair"
-# ....
 ```
 To update all installed plugins:
 ```zsh
@@ -21,13 +20,15 @@ snag-clean-everything
 
 ## Installation:
 ```zsh
-wget https://raw.githubusercontent.com/Theory-of-Everything/snag/main/snag.zsh -O "$ZDOTDIR/"
+$ wget https://raw.githubusercontent.com/Theory-of-Everything/snag/main/snag.zsh -O "$ZDOTDIR/"
 ```
 Source it in your .zshrc:
 ```zsh
-# or source it wherever you have it installed
+# .zshrc
+
 source "$ZDOTDIR/snag.zsh"
+# or source it wherever you have it installed
 ```
 
 ## Notes:
-This tool relies on having your `$ZDOTDIR` evironment varible set, and will not function properly if not set.
+This tool relies on having your `$ZDOTDIR` evironment variable set, and will not function properly if not set.
