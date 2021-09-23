@@ -6,10 +6,10 @@ PLUG_DIR="$ZDOTDIR/plug"
 
 function snag-sync() {
 	for plug ($PLUG_DIR/*); do
-		print "${fg[green]%}[SNAG] <======================== ${fg[red]%}Updating${fg[green]%} \(${fg[blue]%}$(echo $plug | cut -d '/' -f 7)${fg[green]%}\)${fg[white]%}"
+		print -P "%B%F{green}[SNAG] <======================== %B%F{red}Updating%B%F{green} \(%b%F{blue}$(echo $plug | cut -d '/' -f 7)%B%F{green}\)%b%F{white}"
 		git -C $plug pull
 	done
-	print "${fg[magenta]%}Finished updating plugins! (enter to continue) ${fg[white]%}"
+	print -P "%B%F{magenta}Finished updating plugins! (enter to continue) %b%F{white}"
 	read
 }
 
@@ -20,19 +20,19 @@ function snag-use() {
         source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
         source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
     else
-		print "${fg[green]%}[SNAG] <======================== ${fg[red]%}Installing${fg[green]%} \(${fg[blue]%}$(echo $PLUGIN_NAME)${fg[green]%}\)${fg[white]%}"
+		print -P "%B%F{green}[SNAG] <======================== %B%F{red}Installing%B%F{green} \(%b%F{blue}$(echo $plug | cut -d '/' -f 7)%B%F{green}\)%b%F{white}"
         git clone "https://github.com/$1.git" "$PLUG_DIR/$PLUGIN_NAME"
-		print "${fg[green]%}[SNAG] Sourcing \(${fg[blue]%}$(echo $PLUGIN_NAME)${fg[green]%}\)${fg[white]%}"
+		print -P "%B%F{green}[SNAG] Sourcing \(%b%F{blue}$(echo $PLUGIN_NAME)%B%F{green}\)%b%F{white}"
         source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
         source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
 	fi
 }
 function snag-clean-everything() {
-	print "${fg[red]%}WARNING: THIS WILL CLEAR ALL PLUGS WITH ESCALATED PRIVILAGES"
-	print "${fg[red]%}Ctrl-c if you want to prevent this${fg[white]%}"
+	print -P "%B%F{red}WARNING: THIS WILL CLEAR ALL PLUGS WITH ESCALATED PRIVILAGES"
+	print -P "%B%F{red}Ctrl-c if you want to prevent this (enter to continue)%b%F{white}"
 	read
-	print "${fg[red]%}Cleaning all plugins, asking for escalated prvilages...${fg[white]%}"
+	print -P "%B%F{red}Cleaning all plugins, asking for escalated prvilages...%b%F{white}"
 	for plug ($PLUG_DIR/*); do
-		sudo rm -r $plug && print "${fg[blue]%}Removed $plug${fg[white]%}" || echo "${fg[red]%}An unexpected error occured!${fg[white]%}"
+		sudo rm -r $plug && print -P "%b%F{blue}Removed $plug%b%F{white}" || echo "%b%F{red}An unexpected error occured!${fg[white]%}"
 	done
 }
