@@ -5,12 +5,12 @@ Snag is an ultra-simple and minimal "plugin manager" for zsh.
 To install "plugins"
 ```zsh
 # .zshrc
-
+# all plugins are cloned to $ZDOTDIR/plug
 snag-use "zsh-users/zsh-syntax-highlighting"
 snag-use "hlissner/zsh-autopair"
 
 # to use plugins with script names not similar to the repo name,
-# pass in a second argument of the filename without '.plugin.zsh'/'.zsh' file extension
+# pass in a second argument of the filename relative path without '.plugin.zsh'/'.zsh' file extension
 snag-use "ael-code/zsh-colored-man-pages" "colored-man-pages"
 ```
 To update all installed plugins:
@@ -24,6 +24,7 @@ $ snag-clean-everything
 
 ## Installation:
 ```zsh
+$ mkdir $ZDOTDIR/plug
 $ wget https://raw.githubusercontent.com/Theory-of-Everything/snag/main/snag.zsh -O "$ZDOTDIR/snag.zsh"
 ```
 Source it in your .zshrc:
