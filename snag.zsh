@@ -14,17 +14,26 @@ function snag-sync() {
 }
 
 function snag-use() {
-	SNAG_CONFIM=false
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
     if [ -d "$PLUG_DIR/$PLUGIN_NAME" ]; then 
-        source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
-        source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+		if [ -z "$2" ]; then
+        	source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+        	source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+		else
+			source "$PLUG_DIR/$PLUGIN_NAME/$2.plugin.zsh" || \
+			source "$PLUG_DIR/$PLUGIN_NAME/$2.zsh"
+		fi
     else
-		print -P "%B%F{green}[SNAG] <======================== %B%F{red}Installing%B%F{green} \(%b%F{blue}$(echo $plug | cut -d '/' -f 7)%B%F{green}\)%b%F{white}"
+		print -P "%B%F{green}[SNAG] <======================== %B%F{red}Installing%B%F{green} \(%b%F{blue}$(echo $PLUGIN_NAME | cut -d '/' -f 7)%B%F{green}\)%b%F{white}"
         git clone "https://github.com/$1.git" "$PLUG_DIR/$PLUGIN_NAME"
 		print -P "%B%F{green}[SNAG] Sourcing \(%b%F{blue}$(echo $PLUGIN_NAME)%B%F{green}\)%b%F{white}"
-        source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
-        source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+		if [ -z "$2" ]; then
+        	source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.plugin.zsh" || \
+        	source "$PLUG_DIR/$PLUGIN_NAME/$PLUGIN_NAME.zsh"
+		else
+			source "$PLUG_DIR/$PLUGIN_NAME/$2.plugin.zsh" || \
+			source "$PLUG_DIR/$PLUGIN_NAME/$2.zsh"
+		fi
 	fi
 }
 function snag-clean-everything() {

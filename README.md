@@ -8,6 +8,10 @@ To install "plugins"
 
 snag-use "zsh-users/zsh-syntax-highlighting"
 snag-use "hlissner/zsh-autopair"
+
+# to use plugins with script names not similar to the repo name,
+# pass in a second argument of the filename without '.plugin.zsh'/'.zsh' file extension
+snag-use "ael-code/zsh-colored-man-pages" "colored-man-pages"
 ```
 To update all installed plugins:
 ```zsh
@@ -15,12 +19,12 @@ $ snag-sync
 ```
 To clean/delete all installed plugins (requires root access):
 ```zsh
-snag-clean-everything
+$ snag-clean-everything
 ```
 
 ## Installation:
 ```zsh
-$ wget https://raw.githubusercontent.com/Theory-of-Everything/snag/main/snag.zsh -O "$ZDOTDIR/"
+$ wget https://raw.githubusercontent.com/Theory-of-Everything/snag/main/snag.zsh -O "$ZDOTDIR/snag.zsh"
 ```
 Source it in your .zshrc:
 ```zsh
