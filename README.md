@@ -25,7 +25,7 @@ $ snag-clean-everything
 ## Installation:
 ```zsh
 $ mkdir $ZDOTDIR/plug
-$ wget https://raw.githubusercontent.com/Theory-of-Everything/snag/main/snag.zsh -O "$ZDOTDIR/snag.zsh"
+$ wget https://git.sr.ht/~theorytoe/snag/blob/main/snag.zsh -O "$ZDOTDIR/snag.zsh"
 ```
 Source it in your .zshrc:
 ```zsh
