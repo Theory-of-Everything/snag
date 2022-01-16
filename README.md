@@ -25,7 +25,7 @@ To look at info for a plugin:
 ```zsh
 snag -i <pluin-name>
 ```
-To remove a plugin:
+To remove a plugin (root privileges required):
 ```zsh
 # this does not remove the plugin
 # declaration from your .zshrc
@@ -55,6 +55,11 @@ Source it in your .zshrc:
 # by default snag is installed here
 # if you install it somewhere else change accordingly
 source "~/.local/share/bin/snag"
+```
+
+To install only man pages:
+```zsh
+make man
 ```
 
 To uninstall:
