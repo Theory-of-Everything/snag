@@ -1,0 +1,93 @@
+.TH snag 1 2021-01-17 LINUX
+.SH NAME
+snag \- a simple minimal zsh "plugin" manager.
+
+.SH SYNOPSIS
+.B snag
+.RB [ \-u
+.IR plug ]
+.RB [ \-r
+.IR plug ]
+.RB [ \-i 
+.IR plug ]
+.RB [ -sDlvh ]
+.RB [ --help ]
+.RB [ --version ]
+
+.SH DESCRTPTION
+.B snag 
+is a simple "plugin" manager for 
+.B zsh
+designed to be small and have little overhead and bloat.
+
+.SH OPTIONS
+.TP
+.B \-u "plugin/repo"
+Use a zsh plugin, where \fBplugin/repo\fR is the \fBuser/name\fR
+of a github repo of the zsh plugin. This is not the preferred method
+to installing plugins.
+.TP
+.B \-r "plugin/repo"
+Remove an installed plugin, where \fB lugin/repo\fR is the \fBuser/name\fR
+of a github repo of the zsh plugin. This does not remove the plugin installation
+declaration from your rc file.
+.TP
+.BR \-D
+Purge all installed plugins.
+.TP
+.BR \-s
+Update all plugins
+.TP
+.BR \-l
+List all installed plugins.
+.TP
+.B \-i "plugin/repo"
+List info about an installed plugin, where \fBplugin/repo\fR is the \fBuser/name\fR of the installed plugin. This uses \fBcat\fR(1) or \fBmdcat\fR(1) to display the README of the project, unless \fB$SNAG_PAGER\fR is set.
+.TP
+.BR \-h ", " \-\-help
+Print help dialogue.
+.TP
+.BR \-v ", " \-\-version
+Print current snag version.
+
+.SH CONFIGURATION
+.B snag
+installs plugins for 
+.B zsh
+by cloning github repositories into a plug directory and sourcing
+the plugin files. This is usually done in the zsh rc file. This is usually
+located in the following: \fI ~/.zshrc\fR or \fI~/$ZDOTDIR/.zshrc\fR
+.TP
+To use snag you must first source it into your .zshrc. This tool will only work for shell scripting if you source it.
+.IP
+.I source "/path/to/snag.zsh"
+.TP
+Now that snag's functions can be used, lets install a plugin with \fIsnag\-use\fR. You can add this line to your \fI.zshrc\fR to install the plugin. The first argument is the repository that contains the plugin. It will install aloxaf/fzf\-tab in this example.
+.IP
+.I snag\-use "aloxaf/fzf\-tab"
+.TP
+If a plugin has a plugin file that is not the same as its repo name\, you can pass in the third argument, which specifies a filename to look for and source.
+.IP
+.I snag\-use "ael\-code/zsh\-colored\-man\-pages" "colored\-man\-pages"
+.TP
+This is the preferred way of installing plugins with \fBsnag\fR. Please so that this tool at the current moment can only grab plugins from \fIhttps://github.com\fR. A fix to this may come in the near future.
+
+.SH EVIROMENT
+.TP
+SNAG_PAGER
+The pager to use for snag\-plug\-info command.
+.TP
+SNAG_MDCAT
+Set to \fI"true"\fR to enable using \fBmdcat\fR for info previews to stdout. If \fBmdcat\fR in not present on the system, snag will fallback onto \fBcat\fR
+
+.SH AUTHOR
+.TP
+Evan Sarris: <evan@theoryware.net> https://theoryware.net
+.TP
+Source repository at: https://sr.ht/~theorytoe/snag
+.TP
+If you find an issue or need help, please email the mailing list at <~theorytoe/snag@lists.sr.ht>
+
+.SH SEE ALSO
+.TP
+\fBzsh\fR(1) \fBcat\fR(1) \fBmdcat\fR(1) \fBless\fR(1) \fBstdout\fR(1)
