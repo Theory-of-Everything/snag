@@ -6,6 +6,7 @@ To install "plugins"
 ```zsh
 # .zshrc
 # all plugins are cloned to $ZDOTDIR/plug
+# in the pattern user/repo
 snag-use "zsh-users/zsh-syntax-highlighting"
 snag-use "hlissner/zsh-autopair"
 
@@ -13,27 +14,20 @@ snag-use "hlissner/zsh-autopair"
 # pass in a second argument of the filename relative path without '.plugin.zsh'/'.zsh' file extension
 snag-use "ael-code/zsh-colored-man-pages" "colored-man-pages"
 ```
-To update all installed plugins:
-```zsh
-snag -s
+
+Command line options:
 ```
-To list installed plugins:
-```zsh
-snag -l 
-```
-To look at info for a plugin:
-```zsh
-snag -i <pluin-name>
-```
-To remove a plugin (root privileges required):
-```zsh
-# this does not remove the plugin
-# declaration from your .zshrc
-snag -r <plugin-name>
-```
-To clean/delete all installed plugins (requires root access):
-```zsh
-snag -D
+snag [OPTIONS] [PLUG]
+  -u PLUG			install plugin from repo user/repo
+  -r PLUG			remove installed plugin user/repo
+  -D				purge all installed plugins
+  -s				update installed plugins
+
+  -l				list all plugins
+  -i PLUG			get info on a plugin to stdout or pager if set
+
+  -h, --help			print help dialouge
+  -v, --version			print current snag version
 ```
 
 For more detailed documentation:
@@ -72,6 +66,9 @@ manual method
 rm -f ~/.local/share/bin/snag
 rm -f ~/.local/share/man/man1/snag.1.gz
 ```
+
+## Contributing:
+If you want to contibute, file issues in the [tracker](https://todo.sr.ht/~theorytoe/snag-bugs) and send patches to the [mailing list](https://lists.sr.ht/~theorytoe/snag)
 
 ## Notes:
 This tool relies on having your `$ZDOTDIR` evironment variable set, and will not function properly if not set.

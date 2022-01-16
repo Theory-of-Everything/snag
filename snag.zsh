@@ -127,15 +127,18 @@ snag [OPTIONS] [PLUG]
   -i PLUG			get info on a plugin to stdout or pager if set
 
   -h, --help			print help dialouge
-  -v, --version			print current snag verion
+  -v, --version			print current snag version
 
 EOF
 } # }}}
 
 if [ "$1" = "--help" ]; then
 	snag-print-usage
-elif [ "$1" = "--version" ]; then
+	exit 0
+fi
+if [ "$1" = "--version" ]; then
 	echo "$SNAG_VERSION"
+	exit 0
 fi
 
 # parse arguments
