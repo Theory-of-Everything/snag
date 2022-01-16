@@ -15,24 +15,57 @@ snag-use "ael-code/zsh-colored-man-pages" "colored-man-pages"
 ```
 To update all installed plugins:
 ```zsh
-$ snag-sync
+snag -s
+```
+To list installed plugins:
+```zsh
+snag -l 
+```
+To look at info for a plugin:
+```zsh
+snag -i <pluin-name>
+```
+To remove a plugin:
+```zsh
+# this does not remove the plugin
+# declaration from your .zshrc
+snag -r <plugin-name>
 ```
 To clean/delete all installed plugins (requires root access):
 ```zsh
-$ snag-clean-everything
+snag -D
+```
+
+For more detailed documentation:
+```zsh
+man snag
 ```
 
 ## Installation:
 ```zsh
-$ mkdir $ZDOTDIR/plug
-$ wget https://git.sr.ht/~theorytoe/snag/blob/main/snag.zsh -O "$ZDOTDIR/snag.zsh"
+mkdir $ZDOTDIR/plug
+git clone https://git.sr.ht/~theorytoe/snag/blob/main/snag.zsh
+cd snag
+make install
 ```
 Source it in your .zshrc:
 ```zsh
 # .zshrc
 
-source "$ZDOTDIR/snag.zsh"
-# or source it wherever you have it installed
+# by default snag is installed here
+# if you install it somewhere else change accordingly
+source "~/.local/share/bin/snag"
+```
+
+To uninstall:
+```zsh
+cd /path/to/snag/repo
+make uninstall
+```
+manual method
+```zsh
+rm -f ~/.local/share/bin/snag
+rm -f ~/.local/share/man/man1/snag.1.gz
 ```
 
 ## Notes:
